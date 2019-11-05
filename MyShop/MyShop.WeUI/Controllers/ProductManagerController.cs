@@ -48,7 +48,7 @@ namespace MyShop.WeUI.Controllers
 				return HttpNotFound();
 			}
 			else {
-				return View("product");
+				return View(product);
 			}
 		}
 		[HttpPost]
