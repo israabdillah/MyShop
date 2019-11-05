@@ -10,11 +10,11 @@ namespace MyShop.WeUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-		ProductCategoryRepository context;
+		InMemoryRepository<ProductCategory> context;
 
 		public ProductCategoryManagerController()
 		{
-			context = new ProductCategoryRepository();
+			context = new InMemoryRepository<ProductCategory>();
 		}
 		// GET: ProductManager
 		public ActionResult Index()
@@ -47,7 +47,7 @@ namespace MyShop.WeUI.Controllers
 
 		public ActionResult Edit(string Id)
 		{
-			ProductCategory productCategory = context.find(Id);
+			ProductCategory productCategory = context.Find(Id);
 			if (productCategory == null)
 			{
 				return HttpNotFound();
@@ -60,7 +60,7 @@ namespace MyShop.WeUI.Controllers
 		[HttpPost]
 		public ActionResult Edit(ProductCategory productCategory, string Id)
 		{
-			ProductCategory productCategoryToEdit = context.find(Id);
+			ProductCategory productCategoryToEdit = context.Find(Id);
 			if (productCategoryToEdit == null)
 			{
 				return HttpNotFound();
@@ -83,7 +83,7 @@ namespace MyShop.WeUI.Controllers
 		}
 		public ActionResult Delete(string Id)
 		{
-			ProductCategory productCategoryToDelete = context.find(Id);
+			ProductCategory productCategoryToDelete = context.Find(Id);
 			if (productCategoryToDelete == null)
 			{
 				return HttpNotFound();
@@ -98,7 +98,7 @@ namespace MyShop.WeUI.Controllers
 		[ActionName("Delete")]
 		public ActionResult ConfirmDelete(string Id)
 		{
-			ProductCategory productCategoryToDelete = context.find(Id);
+			ProductCategory productCategoryToDelete = context.Find(Id);
 			if (productCategoryToDelete == null)
 			{
 				return HttpNotFound();
