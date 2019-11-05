@@ -16,7 +16,7 @@ namespace MyShop.DataAccess.InMemory
 
 		public ProductRepository()
 		{
-			products = cache["product"] as List<Product>;
+			products = cache["products"] as List<Product>;
 			if (products == null)
 			{
 				products = new List<Product>();
@@ -24,7 +24,7 @@ namespace MyShop.DataAccess.InMemory
 		}
 
 		public void Commit() {
-			cache["product"] = products;
+			cache["products"] = products;
 		}
 
 		public void Insert(Product p) {
