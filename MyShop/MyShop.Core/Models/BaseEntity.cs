@@ -11,8 +11,8 @@ namespace MyShop.Core.Models
 		public string Id { get; set; }
 		public DateTimeOffset CreateAt { get; set; }
 		public BaseEntity() {
-			this.Id = Guid.NewGuid().ToString();
-			this.CreateAt = DateTime.Now; 
+			Id = Guid.NewGuid().ToString();
+			CreateAt = DateTime.Now; 
 		}
 	}
 }
