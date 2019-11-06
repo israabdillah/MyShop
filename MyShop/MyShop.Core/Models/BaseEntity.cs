@@ -10,7 +10,7 @@ namespace MyShop.Core.Models
 	{
 		public string Id { get; set; }
 		public DateTimeOffset CreateAt { get; set; }
-		public BaseEntity() {
+		public BaseEntity() {	
 			Id = Guid.NewGuid().ToString();
 			CreateAt = DateTime.Now; 
 		}
