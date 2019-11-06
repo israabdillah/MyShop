@@ -29,7 +29,6 @@ namespace MyShop.WeUI.Controllers
 
 		public ActionResult Create() {
 			ProductManagerViewModel viewModel = new ProductManagerViewModel();
-
 			viewModel.Product = new Product();
 			viewModel.ProductCategories = productCategories.Collection();
 			return View(viewModel);
@@ -42,7 +41,8 @@ namespace MyShop.WeUI.Controllers
 				return View(product);
 			}
 			else {
-				if (file != null) {
+				if (file != null)
+				{
 					product.Image = product.Id + Path.GetExtension(file.FileName);
 					file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
 				}
