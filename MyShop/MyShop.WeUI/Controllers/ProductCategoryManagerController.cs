@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MyShop.Core.Contracts;
 using MyShop.Core.Models;
-using MyShop.DataAccess.InMemory;
 
 namespace MyShop.WeUI.Controllers
 {
@@ -17,7 +14,6 @@ namespace MyShop.WeUI.Controllers
 		{
 			this.context = context;
 		}
-		// GET: ProductManager
 		public ActionResult Index()
 		{
 			List<ProductCategory> productCategories = context.Collection().ToList();
@@ -32,7 +28,6 @@ namespace MyShop.WeUI.Controllers
 		[HttpPost]
 		public ActionResult Create(ProductCategory productCategory)
 		{
-
 			if (!ModelState.IsValid)
 			{
 				return View(productCategory);

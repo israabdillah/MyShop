@@ -13,5 +13,9 @@ namespace MyShop.Core.Models
 		public Basket() {
 			this.BasketItems = new List<BasketItem>();
 		}
+		public string BasketId { get; set; }
+		public string ProductId { get; set; }
+		public string Name { get; set; }
+		public int Quanity { get; set; }
 	}
 }
