@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
@@ -86,7 +87,12 @@ namespace MyShop.WeUI
             }
             return manager;
         }
-    }
+
+		internal Task CreateAsync(IPrincipal user, string password)
+		{
+			throw new NotImplementedException();
+		}
+	}
 
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>

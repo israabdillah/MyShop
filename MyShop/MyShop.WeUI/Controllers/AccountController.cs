@@ -24,7 +24,7 @@ namespace MyShop.WeUI.Controllers
         public AccountController(IRepository<Customer> customerRepository)
         {
 			this.customerRepository = customerRepository;
-        }
+        }	
 
 		public ApplicationSignInManager SignInManager
         {
