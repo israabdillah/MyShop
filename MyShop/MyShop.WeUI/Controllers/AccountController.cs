@@ -159,7 +159,7 @@ namespace MyShop.WeUI.Controllers
 						Email = model.Email,
 						FirstName = model.FirstName,
 						LastName = model.LastName,
-						State = model.State,
+						State = model.State,	
 						Street = model.Street,
 						ZipCode = model.ZipCode,
 						userId = user.Id

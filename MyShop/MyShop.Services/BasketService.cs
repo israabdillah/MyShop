@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using MyShop.Contracts;
 using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 using MyShop.Core.ViewModels;
 
 namespace MyShop.Services
 {
-	public class BasketService : IBasketService
+	public class BasketService : IEBasketService
 	{
 		IRepository<Product> productContext;
 		IRepository<Basket> basketContext;
@@ -74,22 +75,22 @@ namespace MyShop.Services
 		public void AddToBasket(HttpContextBase httpContext, string productId)
 		{
 			Basket basket = GetBasket(httpContext, true);
-			BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
+			BasketItem items = basket.BasketItems.FirstOrDefault(a => a.ProductId == productId);
 
-			if (item == null)
+			if (items == null)
 			{
-				item = new BasketItem()
+				items = new BasketItem()
 				{
 					BasketId = basket.Id,
 					ProductId = productId,
 					Quanity = 1
 				};
 
-				basket.BasketItems.Add(item);
+				basket.BasketItems.Add(items);
 			}
 			else
 			{
-				item.Quanity = item.Quanity + 1;
+				items.Quanity = items.Quanity + 1;
 			}
 
 			basketContext.Commit();
@@ -157,7 +158,8 @@ namespace MyShop.Services
 			}
 		}
 
-		public void ClearBasket(HttpContextBase httpContext) {
+		public void ClearBasket(HttpContextBase httpContext)
+		{
 			Basket basket = GetBasket(httpContext, false);
 			basket.BasketItems.Clear();
 			basketContext.Commit();

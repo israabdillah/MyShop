@@ -2,14 +2,14 @@
 using System.Web;
 using MyShop.Core.ViewModels;
 
-namespace MyShop.Services
+namespace MyShop.Contracts
 {
-	public interface IBasketService
+	public interface IEBasketService
 	{
 		void AddToBasket(HttpContextBase httpContext, string productId);
+		void ClearBasket(HttpContextBase httpContext);
 		List<BasketItemViewModel> GetBasketItems(HttpContextBase httpContext);
 		BasketSummaryViewModel GetBasketSummary(HttpContextBase httpContext);
 		void RemoveFromBasket(HttpContextBase httpContext, string itemId);
-		void ClearBasket(HttpContextBase httpContext);
 	}
 }
