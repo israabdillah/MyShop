@@ -10,6 +10,7 @@ using MyShop.Core.ViewModels;
 
 namespace MyShop.WeUI.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class ProductManagerController : Controller
 	{
 		IRepository<Product> context;

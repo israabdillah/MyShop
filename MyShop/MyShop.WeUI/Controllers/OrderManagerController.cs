@@ -8,7 +8,8 @@ using MyShop.Core.Models;
 
 namespace MyShop.WeUI.Controllers
 {
-    public class OrderManagerController : Controller
+	[Authorize(Roles = "Admin")]
+	public class OrderManagerController : Controller
     {
 		IOrderService orderService;
 

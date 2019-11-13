@@ -6,7 +6,8 @@ using MyShop.Core.Models;
 
 namespace MyShop.WeUI.Controllers
 {
-    public class ProductCategoryManagerController : Controller
+	[Authorize(Roles = "Admin")]
+	public class ProductCategoryManagerController : Controller
     {
 		IRepository<ProductCategory> context;
 

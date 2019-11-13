@@ -19,7 +19,7 @@ namespace MyShop.WeUI.Controllers
 
         public ManageController()
         {
-
+		
         }
 
         public ApplicationSignInManager SignInManager
