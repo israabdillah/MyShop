@@ -20,8 +20,8 @@ namespace MyShop.Services
 
 		public BasketService(IRepository<Product> ProductContext, IRepository<Basket> BasketContext)
 		{
-			this.basketContext = BasketContext;
-			this.productContext = ProductContext;
+			basketContext = BasketContext;
+			productContext = ProductContext;
 
 		}
 
@@ -75,31 +75,31 @@ namespace MyShop.Services
 		public void AddToBasket(HttpContextBase httpContext, string productId)
 		{
 			Basket basket = GetBasket(httpContext, true);
-			BasketItem items = basket.BasketItems.FirstOrDefault(a => a.ProductId == productId);
+			BasketItem item = basket.BasketItems.FirstOrDefault(i => i.ProductId == productId);
 
-			if (items == null)
+			if (item == null)
 			{
-				items = new BasketItem()
+				item = new BasketItem()
 				{
 					BasketId = basket.Id,
 					ProductId = productId,
-					Quanity = 1
+					Quanity = 1,
 				};
 
-				basket.BasketItems.Add(items);
+				basket.BasketItems.Add(item);
 			}
 			else
 			{
-				items.Quanity = items.Quanity + 1;
+				item.Quanity = item.Quanity + 1;
 			}
 
-			basketContext.Commit();
+			basketContext.Commit();	
 		}
 
 		public void RemoveFromBasket(HttpContextBase httpContext, string itemId)
 		{
 			Basket basket = GetBasket(httpContext, true);
-			BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == itemId);
+			BasketItem item = basket.BasketItems.FirstOrDefault(items => items.Id == itemId);
 
 			if (item != null)
 			{
@@ -114,7 +114,7 @@ namespace MyShop.Services
 
 			if (basket != null)
 			{
-				var result = (from b in basket.BasketItems
+				var results = (from b in basket.BasketItems
 							  join p in productContext.Collection() on b.ProductId equals p.Id
 							  select new BasketItemViewModel()
 							  {
@@ -124,7 +124,7 @@ namespace MyShop.Services
 								  Image = p.Image,
 								  Price = p.Price
 							  }).ToList();
-				return result;
+				return results;
 			}
 			else
 			{

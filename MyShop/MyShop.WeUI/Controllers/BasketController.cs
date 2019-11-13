@@ -29,9 +29,9 @@ namespace MyShop.WeUI.Controllers
 			return View(model);
 		}
 
-		public ActionResult AddToBasket(string Id) {
+		public ActionResult AddToBasket(string Id) 
+		{
 			basketService.AddToBasket(HttpContext, Id);
-
 			return RedirectToAction("Index");
 		}
 
@@ -66,7 +66,8 @@ namespace MyShop.WeUI.Controllers
 				};
 				return View(order);
 			}
-			else {
+			else
+			{
 				return RedirectToAction("Error");
 			}
 		}

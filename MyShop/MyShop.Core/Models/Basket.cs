@@ -11,7 +11,7 @@ namespace MyShop.Core.Models
 		public virtual ICollection<BasketItem> BasketItems { get; set; }
 
 		public Basket() {
-			this.BasketItems = new List<BasketItem>();
+			BasketItems = new List<BasketItem>();
 		}
 		public string BasketId { get; set; }
 		public string ProductId { get; set; }

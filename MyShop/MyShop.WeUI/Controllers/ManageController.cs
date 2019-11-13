@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MyShop.WebUI.Controllers;
 using MyShop.WeUI.Models;
 
 namespace MyShop.WeUI.Controllers
